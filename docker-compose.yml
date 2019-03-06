@@ -1,0 +1,32 @@
+version: "3.6"
+services:
+  db:
+    image: postgres:11.2-alpine
+    environment:
+      - POSTGRES_PASSWORD=pw_unleash
+    volumes:
+      - ./initdb/:/docker-entrypoint-initdb.d/
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  unleash:
+    image: unleashorg/unleash-server:3.2.1
+    environment:
+      - DATABASE_URL=postgres://unleash:pw_unleash@db:5432/unleash
+    depends_on:
+      - db
+    ports:
+      - "4242:4242"
+
+  demo:
+    build: .
+    environment:
+      - UNLEASH_URL=http://unleash:4242/api
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+
+volumes:
+  ? pg_data
