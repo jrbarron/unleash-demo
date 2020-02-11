@@ -11,7 +11,7 @@ services:
       - "5432:5432"
 
   unleash:
-    image: unleashorg/unleash-server:3.2.1
+    image: unleashorg/unleash-server:3.2
     environment:
       - DATABASE_URL=postgres://unleash:pw_unleash@db:5432/unleash
     depends_on:
@@ -24,7 +24,7 @@ services:
     environment:
       - UNLEASH_URL=http://unleash:4242/api
     volumes:
-      - .:/app
+      - ./src:/app
     ports:
       - "3000:3000"
 

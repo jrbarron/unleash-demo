@@ -1,0 +1,47 @@
+{{define "rick_roll"}}
+    {{if isEnabled "RickRoll" .Ctx}}
+        <p>
+        <div class="video-container">
+            <iframe
+                id="ytplayer"
+                type="text/html"
+                width="640"
+                height="360"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&origin=http://example.com"
+                frameborder="0">
+            </iframe>
+        </div>
+        </p>
+    {{end}}
+{{end}}
+
+{{define "navbar"}}
+    {{if isEnabled "PinkNavBar" .Ctx}}
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: magenta;">
+    {{else}}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    {{end}}
+        <a class="navbar-brand" href="#">
+            <img src="https://github.com/Unleash/unleash/blob/master/website/static/img/logo-inverted.png?raw=true" width="30" height="30" alt="">
+            &nbsp;Unleash Demo
+        </a>
+    </nav>
+{{end}}
+
+{{define "nyancat"}}
+    {{if isEnabled "NyanCat" .Ctx}}
+    <p>
+    <div style="width:100%;height:0;padding-bottom:63%;position:relative;">
+        <iframe
+                src="https://giphy.com/embed/sIIhZliB2McAo"
+                width="100%"
+                height="100%"
+                style="position:absolute"
+                frameBorder="0"
+                class="giphy-embed"
+                allowFullScreen
+        ></iframe>
+    </div>
+    </p>
+    {{end}}
+{{end}}
