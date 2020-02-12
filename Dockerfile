@@ -21,8 +21,6 @@ ENTRYPOINT CompileDaemon \
     -directory=/app \
     -build-dir=. \
     -color=true \
-    -pattern=(.+\.go|.+\.html)$ \
-    -include=./**/*.html \
     -graceful-kill=true \
     -build="go build -gcflags=-N -gcflags=-l -o /app/demo ." \
     -command="./demo"
